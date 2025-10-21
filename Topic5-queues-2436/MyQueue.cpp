@@ -119,7 +119,7 @@ void MySpace::CircularStaticQueue::dequeue()
 	else
 	{
 		first = (first + 1) % MAX_QUEUE_CAPACITY; //vetted 
-		//last = (last + 1) % MAX_QUEUE_CAPACITY; //DO we need to this?
+		//last = (last + 1) % MAX_QUEUE_CAPACITY; //DO we need to this? (oh snap!)
 	}
 }
 

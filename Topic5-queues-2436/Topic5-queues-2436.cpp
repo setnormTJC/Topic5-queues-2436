@@ -23,10 +23,10 @@ int main()
         circularStaticQueue.enqueue("D");
         circularStaticQueue.enqueue("E");
 
-        circularStaticQueue.dequeue(); 
+        circularStaticQueue.dequeue(); //remove Alice (because she was the first in line)  
         circularStaticQueue.enqueue("F");
 
-        circularStaticQueue.dequeue();
+        circularStaticQueue.dequeue(); //remove Bob (he was next)
 
         //while(naiveQueue.emp)
 
