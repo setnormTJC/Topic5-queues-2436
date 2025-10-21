@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+#include<queue> 
+
 #include"MyQueue.h"
 
 int main()
@@ -11,17 +13,22 @@ int main()
     
     try
     {
-        MySpace::NaiveQueue naiveQueue; 
+
+        MySpace::CircularStaticQueue circularStaticQueue;
 
         //naiveQueue.dequeue(); //that's what I like about Texas!
-        naiveQueue.enqueue("Alice"); //in std::queue, this is called push 
-        naiveQueue.enqueue("Bob");
-        naiveQueue.enqueue("Carol"); 
+        circularStaticQueue.enqueue("A"); //in std::queue, this is called push 
+        circularStaticQueue.enqueue("B");
+        circularStaticQueue.enqueue("C"); 
+        circularStaticQueue.enqueue("D");
+        circularStaticQueue.enqueue("E");
 
-        naiveQueue.dequeue(); 
+        circularStaticQueue.dequeue(); 
+        circularStaticQueue.enqueue("F");
 
-       
+        circularStaticQueue.dequeue();
 
+        //while(naiveQueue.emp)
 
     }
 
