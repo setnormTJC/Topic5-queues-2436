@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "SinglyLinkedList.h"
 
 
 namespace MySpace
@@ -50,13 +51,14 @@ namespace MySpace
 		int last = -1;
 
 	public:
-		void enqueue(const std::string& thingToEnqueue);
+		void enqueue(const std::string& thingToEnqueue) override;
 
-		/*N.B. "chaining" example: queueName.enqueue("Thing 1).enqueue("Thing 2")*/
+		/*N.B. "chaining" example: queueName.enqueue("Thing 1).enqueue("Thing 2")
+		Just a "convenience" method */
 		CircularStaticQueue& enqueueWithChaining(const std::string& thingToEnqueue);
 
 		/*Aiming at average time complexity O(1) here...*/
-		void dequeue();
+		void dequeue() override;
 
 		bool isEmpty() const;
 		bool isFull();
@@ -65,7 +67,9 @@ namespace MySpace
 
 		CircularStaticQueue();
 
-		/*******************Extra methods****************/
+		void print();
+
+		/*******************"Extra" methods****************/
 
 
 		CircularStaticQueue& inPlaceMerge(CircularStaticQueue& other);
@@ -74,6 +78,16 @@ namespace MySpace
 		* ALSO note: this method relies on `enqueue`'s safety check for a full queue
 		*/
 		CircularStaticQueue outOfPlaceMerge(CircularStaticQueue& other);
+	};
+
+	class QueueFromLinkedList : public QueueADT
+	{
+		SinglyLinkedList theQueueData; //NOTE: above we used a C-style array here
+
+	public: 
+		QueueFromLinkedList(const std::string& valueInitiallyAtFrontOfQueue); 
+		void enqueue(const std::string& thingToEnqueue) override;
+		void dequeue() override; 
 	};
 
 	/*SHOULD a queue's max capacity be able to grow and shrink?

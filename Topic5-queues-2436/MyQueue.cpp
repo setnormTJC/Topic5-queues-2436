@@ -37,12 +37,6 @@ void MySpace::NaiveQueue::dequeue()
 
 MySpace::NaiveQueue::NaiveQueue()
 {
-	//theQueueData[0] = "Make";
-	//theQueueData[1] = "us";
-	//theQueueData[2] = "whole";
-	//theQueueData[3] = "again, ";
-	//theQueueData[4] = "Isaac";
-
 	for (int i = 0; i < MAX_QUEUE_CAPACITY; ++i)
 	{
 		theQueueData[i] = ""; //EXPLICITLY initializing all queue elements to empty string
@@ -159,6 +153,21 @@ MySpace::CircularStaticQueue::CircularStaticQueue()
 	}
 }
 
+void MySpace::CircularStaticQueue::print()
+{
+	while (!this->isEmpty())
+	{
+		//get front
+		//pop
+	}
+
+	//the approach above empties the queue!
+	//make a copy (or make this a "free function" that takes a queue by value (makes a copy) - not by reference)
+
+	//or, you COULD use the underlying array implementation's subscript operator
+	//this somewhat "breaks" the FIFO access, but the client does not get to access these details
+}
+
 MySpace::CircularStaticQueue& MySpace::CircularStaticQueue::inPlaceMerge(CircularStaticQueue& other)
 {
 	while (other.isEmpty() == false)
@@ -205,3 +214,24 @@ MySpace::CircularStaticQueue MySpace::CircularStaticQueue::outOfPlaceMerge(Circu
 
 	return newQueue;
 }
+
+
+#pragma region QueueFromLinkedList
+MySpace::QueueFromLinkedList::QueueFromLinkedList(const std::string& valueInitiallyAtFrontOfQueue)
+	:theQueueData(valueInitiallyAtFrontOfQueue) //NOTE: this gives a good example of why this syntax is preferred
+{
+}
+
+void MySpace::QueueFromLinkedList::enqueue(const std::string& thingToEnqueue)
+{
+	//just call the underlying container(linked list)'s pushBack method
+	theQueueData.pushBack(thingToEnqueue);
+}
+
+void MySpace::QueueFromLinkedList::dequeue()
+{
+	//just called the underlying implementation's popFront method: 
+	theQueueData.popFront(); 
+}
+
+#pragma endregion

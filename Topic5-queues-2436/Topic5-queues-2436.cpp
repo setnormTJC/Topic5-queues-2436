@@ -16,7 +16,7 @@ int main()
 
         MySpace::CircularStaticQueue circularStaticQueue;
 
-        //naiveQueue.dequeue(); //that's what I like about Texas!
+        //naiveQueue.dequeue(); //throws exception - cannot pop empty queue
         circularStaticQueue.enqueue("A"); //in std::queue, this is called push 
         circularStaticQueue.enqueue("B");
         circularStaticQueue.enqueue("C"); 
@@ -29,6 +29,11 @@ int main()
         circularStaticQueue.dequeue(); //remove Bob (he was next)
 
         //while(naiveQueue.emp)
+
+        //demo of "chaining" operations (cout uses this - ex: cout << a << b << "\n"): 
+        circularStaticQueue.enqueueWithChaining("G").enqueueWithChaining("H").enqueue("I");
+
+        //circularStaticQueue.enqueue("J").circularStaticQueue.enqueue("K); //won't work
 
     }
 
